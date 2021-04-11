@@ -14,11 +14,11 @@ const Title = styled.h3`
   padding: 8px;
 `;
 
-const TaskContainer = styled.div`
+const LoadListBox = styled.div`
   padding: 8px;
 `;
 
-const TaskList = styled.div`
+const LoadList = styled.div`
   border: 1px solid lightgrey;
   border-radius: 2px;
   padding: 8px;
@@ -44,23 +44,22 @@ function App() {
         <Title>Load List</Title>
         <Droppable droppableId="loadList">
         {(provided) => (
-          <TaskContainer {...provided.droppableProps} ref={provided.innerRef}>
+          <LoadListBox {...provided.droppableProps} ref={provided.innerRef}>
             {loadList.map((load , index) => {
-              console.log(load.Load_Number);
               return (
                 <Draggable draggableId={index.toString()} index={index}>
                 {(provided) => (
-                  <TaskList key={index} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                  <LoadList key={index} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                     
                     {`${load.Stop_Name}`}
-                  </TaskList>
+                  </LoadList>
                 )} 
               </Draggable>
               )
               
             })}
             {provided.placeholder}
-          </TaskContainer>
+          </LoadListBox>
         )
 
         }
